@@ -49,9 +49,27 @@ I decided to pick a shallow depth of 50 meters maximum for initial analysis.
 
 ### Welch's Test Results
 
-  * Mean Temperature for 1974-1997:  2.644420401754488
-  * Mean Temperature for 1998-2013:  1.029152611217822
-     ---------------------------------------------
-  * P-value for Welch's T-test:  5.84496777867e-281
-     ---------------------------------------------
-  * Reject Null Hypothesis?:  True
+  * Mean Temperature for 1974-1997:  2.678
+  * Mean Temperature for 1998-2013:  1.029
+  * P-value for Welch's T-test:  2.214e-247
+  * Reject Null Hypothesis?: Yes
+
+### What?
+
+I would have assumed that the mean for 1998-2013 would have been greater than the mean for 1974-1997. So, I decided to re-do the test with various depths.
+
+  * Depth 50m - 2000m
+  * Mean Temperature for 1974-1997: 0.947
+  * Mean Temperature for 1998-2013: 0.165
+  * P-value for Welch's T-test:  0.0
+  * Reject Null Hypothesis?: Yes
+
+  * Depth 2001m - 5450m
+  * Mean Temperature for 1974-1997: -0.711
+  * Mean Temperature for 1998-2013: -0.577
+  * P-value for Welch's T-test:  6.210e-24
+  * Reject Null Hypothesis?: Yes
+
+### Further Investigation
+
+In all three cases using Welch's t-test, the p-value was small enough to justify rejecting the null hypothesis. However, it is likely that there is something I am missing in the data. Are we measuring at higher latitudes in later years than we were in earlier years? Does salinity have something to do with temperature?  
