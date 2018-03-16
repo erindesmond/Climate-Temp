@@ -64,6 +64,8 @@ I would have assumed that the mean for 1998-2013 would have been greater than th
   * P-value for Welch's T-test:  0.0
   * Reject Null Hypothesis?: Yes
 
+---
+
   * Depth 2001m - 5450m
   * Mean Temperature for 1974-1997: -0.711
   * Mean Temperature for 1998-2013: -0.577
