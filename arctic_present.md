@@ -5,12 +5,53 @@
 
 Goal: Looking at data from the NOAA and GODAP, use hypothesis testing to determine whether there has been a statistically significant change in sea water temperature between the years of 1974 and 2013 in the Arctic Ocean.
 
-### Data Cleaning & EDA
+### Data Cleaning
 
-The dataset I used consisted of 123,494 rows and 101 columns before cleaning, and the dataset came with a guide book which described the various column names. The dataset can be found here[https://github.com/erindesmond/Climate-Temp/blob/master/data/0-data/data_product/GLODAPv2%20Arctic%20Ocean.csv] and the guide book can be found here[https://github.com/erindesmond/Climate-Temp/blob/master/data/0-data/Guide-1.pdf].
+The dataset I used consisted of 123,494 rows and 101 columns before cleaning, and the dataset came with a guide book which described the various column names. The dataset can be found [here](https://github.com/erindesmond/Climate-Temp/blob/master/data/0-data/data_product/GLODAPv2%20Arctic%20Ocean.csv) and the guide book can be found [here](https://github.com/erindesmond/Climate-Temp/blob/master/data/0-data/Guide-1.pdf).
 
 The columns varied between times, station id, location, latitude and longitude, sampling id, sampling depth, sampling type, and various measurements including temperature and elements, minerals, and organic matter. They also consisted of columns that indicated whether a sample had been quality controlled, and the 'score' for that quality control.
 
-For initial cleaning before EDA, I dropped the columns indicating quality control, replaced any values of -9999 with NaN, and ended up with 23 columns.
+For initial cleaning before EDA, I dropped the columns indicating quality control, replaced any values of -9999 with NaN, and ended up with 23 columns. I then got the percentage of NaN values, and replaced the NaNs in the temperature column with the mean of temperature (there were less than 1% NaN).
 
-   
+### EDA
+
+![corr_map](https://github.com/erindesmond/Climate-Temp/blob/master/arc_images/corr_heatmap.png)
+
+You can see some relatively strong correlations with temperature in the matrix. Because my goal is to explore temperature, I want to keep these in mind. Depth seems to be an indicator for temperature; further, temperature near the surface of the ocean will likely have more variability than temperature in the depths. (It does, I checked). So, I'll organize my hypothesis test with this in mind.
+
+![scc_all](https://github.com/erindesmond/Climate-Temp/blob/master/arc_images/depth_temp_all_scatter.png)
+
+![temp_all_box](https://github.com/erindesmond/Climate-Temp/blob/master/arc_images/temp_all_box.png)
+
+I decided to pick a shallow depth of 50 meters maximum for initial analysis.
+
+![temp_mydepth_all](https://github.com/erindesmond/Climate-Temp/blob/master/arc_images/temp_all_box_mydepth.png)
+
+![temp_young_mydepth](https://github.com/erindesmond/Climate-Temp/blob/master/arc_images/temp_young_mydepth.png)
+
+![temp_old_mydepth](https://github.com/erindesmond/Climate-Temp/blob/master/arc_images/temp_old_mydepth.png)
+
+![hist_all_mydepth](https://github.com/erindesmond/Climate-Temp/blob/master/arc_images/hist_all_mydepth.png)
+
+![hist_young_mydepth](https://github.com/erindesmond/Climate-Temp/blob/master/arc_images/hist_young_mydepth.png)
+
+![hist_old_mydepth](https://github.com/erindesmond/Climate-Temp/blob/master/arc_images/hist_old_mydepth.png)
+
+![hist_both_mydepth](https://github.com/erindesmond/Climate-Temp/blob/master/arc_images/hist_youngold_mydepth.png)
+
+### Hypothesis Testing
+
+  * Null: There was no statistically significant change in Arctic Ocean temperature: (1974-1997) & (1998-2013), 50m max depth.
+  * Alternative: There was a statistically significant change in Arctic Ocean temperature: (1974-1997) & (1998-2013), 50m max depth.
+  * Test type: Welch's two-tailed t-test (unequal variance and sample size)
+  * Alpha: 0.05
+  * Significance Level: 0.025
+
+### Welch's Test Results
+
+  * Mean Temperature for 1974-1997:  2.644420401754488
+  * Mean Temperature for 1998-2013:  1.029152611217822
+     ---------------------------------------------
+  * P-value for Welch's T-test:  5.84496777867e-281
+     ---------------------------------------------
+  * Reject Null Hypothesis?:  True
