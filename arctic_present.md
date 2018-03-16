@@ -74,4 +74,6 @@ I would have assumed that the mean for 1998-2013 would have been greater than th
 
 ### Further Investigation
 
-In all three cases using Welch's t-test, the p-value was small enough to justify rejecting the null hypothesis. However, it is likely that there is something I am missing in the data. Are we measuring at higher latitudes in later years than we were in earlier years? Does salinity have something to do with temperature?  
+In all three cases using Welch's t-test, the p-value was small enough to justify rejecting the null hypothesis. However, it is likely that there is something I am missing in the data. Are we measuring at higher latitudes in later years than we were in earlier years? Does salinity have something to do with temperature?
+
+![corr_map](https://github.com/erindesmond/Climate-Temp/blob/master/arc_images/corr_heatmap.png)
